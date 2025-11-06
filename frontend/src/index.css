@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply the primary gradient to buttons or call‑to‑actions via a
+   custom utility class. */
+/* Primary button style: larger padding and font size */
+.btn-primary {
+  @apply bg-primary text-white font-semibold text-base py-3 px-6 rounded-lg;
+  background-image: theme('backgroundImage.gradient-primary');
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  @apply bg-primary-dark;
+}
