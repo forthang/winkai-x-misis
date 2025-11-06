@@ -1,38 +1,3 @@
-# Preproduction Table Generation Service
-
-This repository contains a full‑stack implementation of a preproduction
-table generation service.  It allows film crews to upload a zipped
-script in PDF or DOCX format and receive a structured Excel table
-describing all of the production elements (locations, time of day,
-characters, extras, props, special effects, etc.) for each scene.  The
-service includes both a **Python FastAPI** backend and a **React
-TypeScript** frontend styled with **Tailwind CSS**.  A simple SQL
-database stores the history of uploads and results.
-
-The actual natural‑language processing that extracts information from
-scripts is not implemented here; instead, a stub generates
-placeholder data.  In a real deployment you would replace the stub
-with your own ML service and have the backend call it.
-
-## Features
-
-* **Upload scripts in ZIP format** – Users drag and drop or select a
-  zipped script, which the backend unpacks and processes.  Only ZIP
-  archives are accepted.
-* **Automatic table generation** – A stub implementation returns an
-  Excel workbook with a preproduction table.  The backend also
-  converts the workbook to JSON so the frontend can display it
-  immediately.
-* **History of uploads** – All uploads are persisted in a SQLite
-  database along with the generated table and the original filename.
-* **Light/Dark theme** – The frontend exposes a theme toggle and
-  persists the user's preference in `localStorage`.  Tailwind CSS’s
-  `dark` variant is used to apply different palettes.
-* **Minimalistic UI with accent colour** – The UI is clean and
-  modern, using the accent colour `#FF841C` and a matching gradient.
-* **Dockerized** – A multi‑stage Dockerfile builds the frontend,
-  installs backend dependencies and runs everything behind Uvicorn.
-
 ## Project structure
 
 ```
