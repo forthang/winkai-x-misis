@@ -80,24 +80,5 @@ If you prefer to run services separately during development:
    The frontend will run on `http://localhost:5173` and proxy API
    requests to `http://localhost:8000` (see `vite.config.ts`).
 
-## Security considerations
 
-* Only ZIP archives are accepted by the upload endpoint.  The backend
-  uses Python’s built‑in `zipfile` module to extract files.  The
-  `extractall()` method extracts every member to a chosen directory; as
-  noted in the Python documentation, never extract archives from
-  untrusted sources without prior inspection, because filenames may
-  contain absolute paths or `..` segments【989702220391920†L394-L405】.  In this
-  stub implementation the extraction directory is isolated to
-  mitigate path traversal issues.
-* The service stores the uploaded script and the generated result
-  under a unique directory per upload.  You should still review
-  untrusted archives before using them in production.
 
-## Acknowledgements
-
-This project draws on the FastAPI documentation for file uploads, which
-demonstrates how to receive files using `UploadFile`【532705150219520†L292-L303】.
-Dark‑mode support is implemented following Tailwind CSS’s guidance on
-manually toggling dark mode using a `dark` class on the root element
-and localStorage to persist user preference【523031736702918†L293-L361】.
