@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import HistoryPage from './pages/History';
 import ThemeToggle from './components/ThemeToggle';
 import Home from './pages/Home';
+import Logo from './assets/logo.svg';
 
 function App() {
   useEffect(() => {
@@ -22,8 +23,9 @@ function App() {
         <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur">
           <div className="container h-16 flex items-center justify-between">
             <nav className="flex items-center gap-6">
-              <Link to="/" className="text-lg font-semibold">
-                WinkAI
+              <Link to="/" className="flex items-center gap-2 text-lg font-semibold">
+                <img src={Logo} alt="WinkAi Logo" className="h-8 w-8" />
+                <span>WinkAi</span>
               </Link>
               <Link
                 to="/history"
