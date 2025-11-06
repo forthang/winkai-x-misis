@@ -1,36 +1,49 @@
-import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import HistoryPage from './pages/History';
 import ThemeToggle from './components/ThemeToggle';
 import Home from './pages/Home';
 
-const App: React.FC = () => {
+function App() {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className="relative min-h-screen flex flex-col">
-      <header className="absolute top-0 left-0 w-full flex items-center justify-between px-8 py-6 z-10">
-        <nav className="flex items-center space-x-8">
-          <Link to="/" className="text-3xl font-extrabold text-white drop-shadow-md hover:underline">
-            WinkXMissis
-          </Link>
-          <Link to="/history" className="text-lg text-white hover:underline">
-            История
-          </Link>
-        </nav>
-        <ThemeToggle />
-      </header>
-      <main className="flex-1 flex items-start justify-center pt-32 pb-16 px-4">
-        <div className="w-full max-w-4xl">
+    <div className="min-h-screen font-sans antialiased radial-gradient">
+      <div className="relative flex flex-col min-h-screen">
+        <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur">
+          <div className="container h-16 flex items-center justify-between">
+            <nav className="flex items-center gap-6">
+              <Link to="/" className="text-lg font-semibold">
+                WinkAI
+              </Link>
+              <Link
+                to="/history"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                History
+              </Link>
+            </nav>
+            <ThemeToggle />
+          </div>
+        </header>
+        <main className="flex-1 container py-8">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<HistoryPage />} />
           </Routes>
-        </div>
-      </main>
-      <footer className="text-center text-xs text-white/70 dark:text-gray-400 pb-4">
-        © {new Date().getFullYear()} Wink x Misis
-      </footer>
+        </main>
+      </div>
     </div>
   );
-};
+}
 
 export default App;
