@@ -8,3 +8,9 @@ backend/tests/*
 backend/tests/
 backend/tests
 backend/app.db
+backend/results/*
+backend/results/
+backend/results
+backend/uploads/*
+backend/uploads/
+backend/uploads
